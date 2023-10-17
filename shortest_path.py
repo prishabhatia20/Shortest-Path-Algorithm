@@ -48,7 +48,7 @@ class Graph():
             for vertex in range(self.vertex):
                 weight = self.graph[current_node][vertex]
                 print(weight)
-                if weight != 0 and vertex != prev_node and vertex in unvisited_nodes:
+                if weight != 0 and vertex != prev_node and vertex not in visited_nodes:
                     if min_weight == 0:
                         min_weight = weight 
                         next_node = vertex
@@ -60,6 +60,11 @@ class Graph():
                         next_node = vertex
                         prev_node = current_node
                         # print(min_weight, next_node)   
+            if min_weight == 0:
+                visited_nodes.append(current_node)
+                unvisited_nodes.remove(current_node)
+                current_node = prev_node
+                continue
             print(f"next node: {next_node}")
             print(f"shortest edge: {min_weight}")
             visited_nodes.append(current_node)
@@ -79,10 +84,10 @@ class Graph():
 graph_1 = [[0,2,6,0,0,0,0], # vertex 0 
            [2,0,0,5,0,0,0], # vertex 1
            [6,0,0,8,0,0,0], # vertex 2
-           [0,5,8,0,0,0,0], # vertex 3
+           [0,5,8,0,10,15,0], # vertex 3
            [0,0,0,10,0,6,2], # vertex 4
            [0,0,0,15,6,0,6], # vertex 5
-           [0,0,0,0,0,0,0]] # vertex 6
+           [0,0,0,0,2,6,0]] # vertex 6
     
 g = Graph(graph_1)
 p = g.dijkstra(0,6)
