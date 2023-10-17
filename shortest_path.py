@@ -61,14 +61,12 @@ class Graph():
                         prev_node = current_node
                         # print(min_weight, next_node)   
             if min_weight == 0:
-                visited_nodes.append(current_node)
-                unvisited_nodes.remove(current_node)
-                current_node = prev_node
-                continue
+                next_node = prev_node
             print(f"next node: {next_node}")
             print(f"shortest edge: {min_weight}")
-            visited_nodes.append(current_node)
-            unvisited_nodes.remove(current_node)
+            if current_node in unvisited_nodes:
+                visited_nodes.append(current_node)
+                unvisited_nodes.remove(current_node)
             print(f"visted nodes: {visited_nodes}")
             print(f"unvisited nodes: {unvisited_nodes}")
             print(shortest_path)
