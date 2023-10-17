@@ -40,7 +40,16 @@ def test_cycle_across():
 
 
 def test_complete_graph():
-    pass
+    test_graph = [
+        [0, 1, 2, 4, 6],
+        [1, 0, 3, 5, 1],
+        [2, 3, 0, 6, 7],
+        [4, 5, 6, 0, 9],
+        [6, 1, 7, 9, 0],
+    ]
+    test = Graph(test_graph)
+    shortest_path = test.dijkstra(0, 3)
+    assert shortest_path == 4
 
 
 def test_sparse_graph():
@@ -54,7 +63,7 @@ def test_sparse_graph():
         [1, 0, 5, 0, 0, 0, 1, 0],
     ]
     test = Graph(test_graph)
-    shortest_path = test.dijkstra(0, 5)
+    shortest_path = test.dijkstra(0, 4)
     assert shortest_path == 15
 
 
