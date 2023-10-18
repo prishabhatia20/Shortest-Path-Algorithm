@@ -2,14 +2,15 @@
 This script contains the file for the Graph class
 """
 import math
-
+import networkx as nx 
+import matplotlib.pyplot as plt 
 
 class Graph:
     """
     Dikjstra's algorithm
 
     Attributes:
-        graph: A matrix representing a graph weighted edges
+        graph: A adjacency matrix representing a graph weighted edges
         vertex: An integer representing the number of vertices in the graph
     """
 
@@ -35,7 +36,24 @@ class Graph:
         # Assign and return the weight between the two vertices
         weight = self.graph[vi][vj]
         return weight
+    def visualize_graph(self):
+        """
+        Visualize a graph in adjacency matrix form given the matrix and number of vertex
+        """
+        graph_viz = nx.DiGraph()
+        for row in range(self.vertex): 
+            for column in range(self.vertex): 
+                edge_weight = self.get_weights(row,column)
+                if edge_weight > 1: 
+                     graph_viz.add_edge(row,column, weight = edge_weight) 
 
+        pos=nx.spring_layout(graph_viz)
+        nx.draw(graph_viz,pos, node_color='pink', with_labels=True)
+        # specifiy edge labels explicitly
+        edge_labels=dict([((u,v,),d['weight'])
+        for u,v,d in graph_viz.edges(data=True)])
+        nx.draw_networkx_edge_labels(graph_viz,pos,edge_labels=edge_labels)
+        plt.show()
     def dijkstra(self, source, end):
         """
         Dijkstra algorithm that finds the shortest path from one vertex
@@ -45,8 +63,7 @@ class Graph:
             self: an instance of the Graph class
             source: an integer representing the starting vertex
             end: an integer representing the ending vertex
-        """
-
+       """
         # Create an empty list to hold the visited and unvisited nodes
         visited_nodes = []
         unvisited_nodes = []
@@ -118,18 +135,20 @@ class Graph:
             # Switch nodes
             current_node = next_node
         return shortest_path[end]
+    
 
 
 graph_1 = [
     [0, 2, 6, 0, 0, 0, 0],  # vertex 0
     [2, 0, 0, 5, 0, 0, 0],  # vertex 1
     [6, 0, 0, 8, 0, 0, 0],  # vertex 2
-    [0, 5, 8, 0, 10, 15, 0],  # vertex 3
-    [0, 0, 0, 10, 0, 6, 2],  # vertex 4
-    [0, 0, 0, 15, 6, 0, 6],  # vertex 5
-    [0, 0, 0, 0, 2, 6, 0],
+    [0, 5, 8, 0, 10, 15, 0], # vertex 3
+    [0, 0, 0, 10, 0, 6, 2], # vertex 4
+    [0, 0, 0, 15, 6, 0, 6], # vertex 5
+    [0, 0, 0, 0, 2, 6, 0], # vertex 6
 ]  # vertex 6
 
 g = Graph(graph_1)
-p = g.dijkstra(0, 6)
-print(p)
+# p = g.dijkstra(0, 6)
+g.visualize_graph()
+#print(p)
