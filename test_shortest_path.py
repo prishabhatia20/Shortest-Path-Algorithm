@@ -39,6 +39,7 @@ def test_cycle_across():
     assert shortest_path == 11
 
 
+
 def test_complete_graph():
     test_graph = [
         [0, 1, 2, 4, 6],
