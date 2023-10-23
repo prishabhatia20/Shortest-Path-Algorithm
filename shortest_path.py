@@ -101,29 +101,37 @@ class Graph:
             min_weight = 0
             next_node = current_node
             print(f"prev_node: {prev_node}")
-            # Loop to run for every vertex in the graph
-            for vertex in range(self.vertex):
-                weight = self.graph[current_node][vertex]
-                print(weight)
+            # Loop to run for every vertex in the graph -- pick next vertex to go to
+            min_value = self.INF
+            min_value_index = None
+            for i, dist_value in enumerate(shortest_path):
+                if dist_value < min_value and i not in visited_nodes:
+                    min_value = dist_value
+                    min_value_index = i
+            # for vertex in range(self.vertex):
+            # find min unvisited value in shortest path
 
-                # If the weight is not zero, the vertex is not the previous node, and the
-                # vertex has not been added to visited_nodes
-                if weight != 0 and vertex != prev_node and vertex not in visited_nodes:
-                    # If the minimum weight is zero, assign the weight to min_weight
-                    if min_weight == 0:
-                        min_weight = weight
-                        next_node = vertex
-                        prev_node = current_node
-                        # print(min_weight, next_node)
-                    # If the minimum weight is not zero and the min weight is less than 0
-                    # set min_weight to weight
-                    elif min_weight != 0 and weight < min_weight:
-                        min_weight = weight
-                        next_node = vertex
-                        prev_node = current_node
-                        # print(min_weight, next_node)
+            # weight = self.graph[current_node][vertex]
+            # print(weight)
+
+            # # If the weight is not zero, the vertex is not the previous node, and the
+            # # vertex has not been added to visited_nodes
+            # if weight != 0 and vertex != prev_node and vertex not in visited_nodes:
+            #     # If the minimum weight is zero, assign the weight to min_weight
+            #     if min_weight == 0:
+            #         min_weight = weight
+            #         next_node = vertex
+            #         prev_node = current_node
+            #         # print(min_weight, next_node)
+            #     # If the minimum weight is not zero and the min weight is less than 0
+            #     # set min_weight to weight
+            #     elif min_weight != 0 and weight < min_weight:
+            #         min_weight = weight
+            #         next_node = vertex
+            #         prev_node = current_node
+            #         # print(min_weight, next_node)
             # If min_weight is zero, move nodes
-            if min_weight == 0:
+            if min_weight == 0:  # why is this here?
                 next_node = prev_node
             print(f"next node: {next_node}")
             print(f"shortest edge: {min_weight}")
@@ -151,19 +159,28 @@ class Graph:
         return shortest_path[end]
 
 
-graph_1 = [
-    [0, 2, 6, 0, 0, 0, 0],  # vertex 0
-    [2, 0, 0, 5, 0, 0, 0],  # vertex 1
-    [6, 0, 0, 8, 0, 0, 0],  # vertex 2
-    [0, 5, 8, 0, 10, 15, 0],  # vertex 3
-    [0, 0, 0, 10, 0, 6, 2],  # vertex 4
-    [0, 0, 0, 15, 6, 0, 6],  # vertex 5
-    [0, 0, 0, 0, 2, 6, 0],  # vertex 6
-]  # vertex 6
+# graph_1 = [
+#     [0, 2, 6, 0, 0, 0, 0],  # vertex 0
+#     [2, 0, 0, 5, 0, 0, 0],  # vertex 1
+#     [6, 0, 0, 8, 0, 0, 0],  # vertex 2
+#     [0, 5, 8, 0, 10, 15, 0],  # vertex 3
+#     [0, 0, 0, 10, 0, 6, 2],  # vertex 4
+#     [0, 0, 0, 15, 6, 0, 6],  # vertex 5
+#     [0, 0, 0, 0, 2, 6, 0],  # vertex 6
+# ]  # vertex 6
+
+test_graph = [
+    [0, 3, 0, 0, 0, 7],
+    [3, 0, 4, 0, 0, 0],
+    [0, 4, 0, 6, 0, 0],
+    [0, 0, 6, 0, 1, 0],
+    [0, 0, 0, 1, 0, 3],
+    [7, 0, 0, 0, 3, 0],
+]
 
 # start_time = time.time()
 print("Starting Time...")
-g = Graph(graph_1)
+g = Graph(test_graph)
 p = g.dijkstra(0, 6)
 g.visualize_graph()
 # print(p)
