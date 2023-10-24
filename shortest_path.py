@@ -1,32 +1,28 @@
-"""
-This script contains the file for the Graph class
-"""
 import math
 import time
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
 class Graph:
-    """
+  """
     Dikjstra's algorithm
 
     Attributes:
         graph: A adjacency matrix representing a graph weighted edges
         vertex: An integer representing the number of vertices in the graph
     """
+  
+  INF = math.inf
 
-    INF = math.inf
+  def __init__(self,graph):
+    """
+      Initialize the attributes of the class
+    """
+    self.graph = graph
+    self.vertex = len(graph)
 
-    def __init__(self, graph):
-        """
-        Initialize the attributes of the class
-        """
-        self.graph = graph
-        self.vertex = len(graph)
-
-    def get_weights(self, vi, vj):
-        """
+  def get_weights(self, vi, vj):
+    """
         Given two vertices, return the weight between the two
 
         Args:
@@ -34,12 +30,10 @@ class Graph:
             vj: an integer representing the second vertex
         Returns: The weight between the two vertices
         """
-
-        # Assign and return the weight between the two vertices
-        weight = self.graph[vi][vj]
-        return weight
-
-    def visualize_graph(self):
+    
+    weight = self.graph[vi][vj]
+    return weight
+  def visualize_graph(self):
         """
         Visualize a graph in adjacency matrix form given the matrix and number of vertex
         """
@@ -67,9 +61,9 @@ class Graph:
         )
         nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
         plt.show()
-
-    def dijkstra(self, source, end):
-        """
+  
+  def dijkstra(self, source, end):
+    """
         Dijkstra algorithm that finds the shortest path from one vertex
         to another given all weights assigned to edges
 
@@ -78,97 +72,63 @@ class Graph:
             source: an integer representing the starting vertex
             end: an integer representing the ending vertex
         """
-        # Create an empty list to hold the visited and unvisited nodes
-        visited_nodes = []
-        unvisited_nodes = []
+    
+    visited_nodes = []
+    unvisited_nodes = []
 
-        # Append all nodes in the graph to unvisited_nodes
-        for i in range(self.vertex):
-            unvisited_nodes.append(i)
+    # Append all nodes to unvisited list
+    for i in range(self.vertex):
+      unvisited_nodes.append(i)
+      current_node = source
 
-        # Create a list of infinity values
-        shortest_path = [self.INF] * self.vertex
-        shortest_path[source] = 0
+    # Create a list with the source and infinities
+    shortest_path = [self.INF]*self.vertex
+    shortest_path[source] = 0
 
-        # Set current node to the first node
-        current_node = source
-        prev_node = current_node
-
-        # Loop to run while the end vertex has not been reached
-        while end not in visited_nodes:
-            print(f"current node : {current_node}")
-            # Set the minimum weight
-            min_weight = 0
-            next_node = current_node
-            print(f"prev_node: {prev_node}")
-            # Loop to run for every vertex in the graph -- pick next vertex to go to
-            min_value = self.INF
-            min_value_index = None
-            for i, dist_value in enumerate(shortest_path):
-                if dist_value < min_value and i not in visited_nodes:
-                    min_value = dist_value
-                    min_value_index = i
-            # for vertex in range(self.vertex):
-            # find min unvisited value in shortest path
-
-            # weight = self.graph[current_node][vertex]
-            # print(weight)
-
-            # # If the weight is not zero, the vertex is not the previous node, and the
-            # # vertex has not been added to visited_nodes
-            # if weight != 0 and vertex != prev_node and vertex not in visited_nodes:
-            #     # If the minimum weight is zero, assign the weight to min_weight
-            #     if min_weight == 0:
-            #         min_weight = weight
-            #         next_node = vertex
-            #         prev_node = current_node
-            #         # print(min_weight, next_node)
-            #     # If the minimum weight is not zero and the min weight is less than 0
-            #     # set min_weight to weight
-            #     elif min_weight != 0 and weight < min_weight:
-            #         min_weight = weight
-            #         next_node = vertex
-            #         prev_node = current_node
-            #         # print(min_weight, next_node)
-            # If min_weight is zero, move nodes
-            if min_weight == 0:  # why is this here?
-                next_node = prev_node
-            print(f"next node: {next_node}")
-            print(f"shortest edge: {min_weight}")
-            # If the current node is in unvisited_nodes, append it to visited_nodes
-            # and remove it from unvisited_nodes
-            if current_node in unvisited_nodes:
+    while end not in visited_nodes:
+      min_value = self.INF
+      min_value_index = None
+      min_weight = 0
+      for i, dist_value in enumerate(shortest_path):
+        if dist_value < min_value and i not in visited_nodes:
+          min_value = dist_value    # length of shortest path neighbor
+          min_value_index = i       # index of shortest path neighbor
+      for vertex in range(self.vertex):
+          # Find the smallest weight within the row of the next node
+          weight = self.graph[min_value_index][vertex]
+          if weight != 0:
+              min_weight = weight
+          elif min_weight != 0 and weight < min_weight:
+              min_weight = weight
+      # Add current node to visited nodes list and remove it from unvisited nodes list
+      if current_node in unvisited_nodes:
                 visited_nodes.append(current_node)
                 unvisited_nodes.remove(current_node)
-            print(f"visted nodes: {visited_nodes}")
-            print(f"unvisited nodes: {unvisited_nodes}")
-            print(shortest_path)
-            # For every node in unvisited nodes...
-            for node in unvisited_nodes:
-                # Get edge weight
-                edge_weight = self.get_weights(current_node, node)
-                # If the weight is not zero...
-                if edge_weight != 0:
-                    # If the current shortest path plus the edge weight is less than
-                    # the current path, update the shortest path
-                    if shortest_path[current_node] + edge_weight < shortest_path[node]:
-                        shortest_path[node] = shortest_path[current_node] + edge_weight
-            print(shortest_path)
-            # Switch nodes
-            current_node = next_node
-        return shortest_path[end]
+      for node in unvisited_nodes:
+          # Get edge weight
+          edge_weight = self.get_weights(current_node, node)
+          # If the weight is not zero...
+          if edge_weight != 0:
+              # If the current shortest path plus the edge weight is less than
+              # the current path, update the shortest path
+              if shortest_path[current_node] + edge_weight < shortest_path[node]:
+                  shortest_path[node] = shortest_path[current_node] + edge_weight
+      print(shortest_path)
+      # Go to the next node
+      current_node = min_value_index
+      print(f'Shortest path: {shortest_path[end]}')
+    return shortest_path[end]
 
-
-# graph_1 = [
-#     [0, 2, 6, 0, 0, 0, 0],  # vertex 0
-#     [2, 0, 0, 5, 0, 0, 0],  # vertex 1
-#     [6, 0, 0, 8, 0, 0, 0],  # vertex 2
-#     [0, 5, 8, 0, 10, 15, 0],  # vertex 3
-#     [0, 0, 0, 10, 0, 6, 2],  # vertex 4
-#     [0, 0, 0, 15, 6, 0, 6],  # vertex 5
-#     [0, 0, 0, 0, 2, 6, 0],  # vertex 6
-# ]  # vertex 6
-
+graph_1 = [
+    [0, 2, 6, 0, 0, 0, 0],  # vertex 0
+    [2, 0, 0, 5, 0, 0, 0],  # vertex 1
+    [6, 0, 0, 8, 0, 0, 0],  # vertex 2
+    [0, 5, 8, 0, 10, 15, 0],  # vertex 3
+    [0, 0, 0, 10, 0, 6, 2],  # vertex 4
+    [0, 0, 0, 15, 6, 0, 6],  # vertex 5
+    [0, 0, 0, 0, 2, 6, 0],  # vertex 6
+]  # vertex 6
+      
 test_graph = [
     [0, 3, 0, 0, 0, 7],
     [3, 0, 4, 0, 0, 0],
@@ -178,12 +138,15 @@ test_graph = [
     [7, 0, 0, 0, 3, 0],
 ]
 
-# start_time = time.time()
+
+
+
 print("Starting Time...")
+# g = Graph(graph_1)
 g = Graph(test_graph)
-p = g.dijkstra(0, 6)
+p = g.dijkstra(0, 4)
 g.visualize_graph()
-# print(p)
+
 print("About to end time")
 # end_time = time.time()
 print("Ending time...")
