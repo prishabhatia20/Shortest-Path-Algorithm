@@ -1,5 +1,5 @@
 """
-Summary of page
+Timing analysis to compare to our dijkstra implementation to import libraries algorithms.
 """
 
 import time
