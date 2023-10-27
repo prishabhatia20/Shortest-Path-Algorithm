@@ -1,77 +1,16 @@
 import math
-import networkx as nx
-import matplotlib.pyplot as plt
 
 class Graph:
-  """
-    Dikjstra's algorithm
-
-    Attributes:
-        graph: A adjacency matrix representing a graph weighted edges
-        vertex: An integer representing the number of vertices in the graph
-    """
-  
   INF = math.inf
 
   def __init__(self,graph):
-    """
-      Initialize the attributes of the class
-    """
     self.graph = graph
     self.vertex = len(graph)
 
   def get_weights(self, vi, vj):
-    """
-        Given two vertices, return the weight between the two
-
-        Args:
-            vi: an integer representing the first vertex
-            vj: an integer representing the second vertex
-        Returns: The weight between the two vertices
-        """
-    
     weight = self.graph[vi][vj]
     return weight
-  def visualize_graph(self):
-        """
-        Visualize a graph in adjacency matrix form given the matrix and number of vertex
-        """
-        graph_viz = nx.DiGraph()
-        for row in range(self.vertex):
-            for column in range(self.vertex):
-                edge_weight = self.get_weights(row, column)
-                if edge_weight > 1:
-                    graph_viz.add_edge(row, column, weight=edge_weight)
-
-        pos = nx.spring_layout(graph_viz)
-        nx.draw(graph_viz, pos, node_color="pink", with_labels=True)
-        # specifiy edge labels explicitly
-        edge_labels = dict(
-            [
-                (
-                    (
-                        u,
-                        v,
-                    ),
-                    d["weight"],
-                )
-                for u, v, d in graph_viz.edges(data=True)
-            ]
-        )
-        nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
-        plt.show()
-  
   def dijkstra(self, source, end):
-    """
-        Dijkstra algorithm that finds the shortest path from one vertex
-        to another given all weights assigned to edges
-
-        Args:
-            self: an instance of the Graph class
-            source: an integer representing the starting vertex
-            end: an integer representing the ending vertex
-        """
-    
     visited_nodes = []
     unvisited_nodes = []
 
@@ -80,7 +19,7 @@ class Graph:
       unvisited_nodes.append(i)
       current_node = source
 
-    # Create a list with the source and infinities
+    # Create list of infinities
     shortest_path = [self.INF]*self.vertex
     shortest_path[source] = 0
 
@@ -99,7 +38,6 @@ class Graph:
               min_weight = weight
           elif min_weight != 0 and weight < min_weight:
               min_weight = weight
-      # Add current node to visited nodes list and remove it from unvisited nodes list
       if current_node in unvisited_nodes:
                 visited_nodes.append(current_node)
                 unvisited_nodes.remove(current_node)
@@ -113,7 +51,7 @@ class Graph:
               if shortest_path[current_node] + edge_weight < shortest_path[node]:
                   shortest_path[node] = shortest_path[current_node] + edge_weight
       print(shortest_path)
-      # Go to the next node
+      # Switch nodes
       current_node = min_value_index
       print(f'Shortest path: {shortest_path[end]}')
     return shortest_path[end]
@@ -137,17 +75,7 @@ test_graph = [
     [7, 0, 0, 0, 3, 0],
 ]
 
+# g = Graph(test_graph)
+g = Graph(graph_1)
+p = g.dijkstra(0, 5)
 
-
-
-print("Starting Time...")
-# g = Graph(graph_1)
-g = Graph(test_graph)
-p = g.dijkstra(0, 4)
-g.visualize_graph()
-
-print("About to end time")
-# end_time = time.time()
-print("Ending time...")
-# total_time = end_time - start_time
-print(f"Total Time: {time.time()}")
