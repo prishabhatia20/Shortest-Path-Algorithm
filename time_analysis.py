@@ -4,14 +4,16 @@ Summary of page
 
 import time
 from shortest_path import Graph
-#from dijkstar import Graph, find_path
+
+# from dijkstar import Graph, find_path
+
 
 def time_analysis(graph, source, end):
     """
     Doc String
     """
     graph_self = Graph(graph)
-    time_self = get_average(graph_self, source,end)
+    time_self = get_average(graph_self, source, end)
     print(f"self dijkstar average time = {time_self}")
 
 
@@ -29,9 +31,8 @@ def get_average(graph, source, end):
         total_time = end_time - start_time
         print(total_time)
         time_sum = total_time + time_sum
-    average = time_sum/repetition
+    average = time_sum / repetition
     return average
-
 
 
 graph_1 = [
