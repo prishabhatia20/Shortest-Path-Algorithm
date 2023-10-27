@@ -40,9 +40,9 @@ def test_cycle_across():
     assert shortest_path == 11
 
     # simple cycle
-    # Graph credit: https://reginafurness.medium.com/representing-a-weighted-graph-with-an-adjacency-matrix-in-javascript-8a803bfbc36f
+    # Graph credit:
+    # https://reginafurness.medium.com/representing-a-weighted-graph-with-an-adjacency-matrix-in-javascript-8a803bfbc36f
     test_graph_simple = [[0, 2, 3, 0], [2, 0, 0, 2], [3, 0, 0, 6], [0, 2, 6, 0]]
-
     test = Graph(test_graph_simple)
     shortest_path = test.dijkstra(0, 3)
     assert shortest_path == 4

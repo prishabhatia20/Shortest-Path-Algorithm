@@ -2,9 +2,9 @@
 Implementation of Dijkstra Algorithm using Textbook Pseudo code 
 """
 import math
+import time
 import networkx as nx
 import matplotlib.pyplot as plt
-import time
 
 
 class Graph:
@@ -25,22 +25,26 @@ class Graph:
         self.graph = graph
         self.vertex = len(graph)
 
-    def get_weights(self, vi, vj):
+    def get_weights(self, v_i, v_j):
         """
         Given two vertices, return the weight between the two
 
         Args:
-            vi: an integer representing the first vertex
-            vj: an integer representing the second vertex
+            v_i: an integer representing the first vertex
+            v_j: an integer representing the second vertex
         Returns: The weight between the two vertices
         """
 
-        weight = self.graph[vi][vj]
+        weight = self.graph[v_i][v_j]
         return weight
 
     def visualize_graph(self):
         """
         Visualize a graph in adjacency matrix form given the matrix and number of vertex
+        and save file in Graphs folder.
+
+        Args:
+            self: an instance of the Graph class
         """
         graph_viz = nx.DiGraph()
         for row in range(self.vertex):
@@ -65,8 +69,7 @@ class Graph:
             ]
         )
         nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
-        graph_time = time.time()
-        graph_time = str(graph_time)[-4:]
+        graph_time = str(time.time())[-4:]
         plt.show(block=False)
         plt.savefig(f"Graphs/graph_{graph_time}.PNG", format="PNG")
 
@@ -124,5 +127,4 @@ class Graph:
             # Go to the next node
             current_node = min_value_index
             # print(f"Shortest path: {shortest_path[end]}")
-
         return shortest_path[end]
