@@ -1,5 +1,5 @@
 """
-Testing Function
+Testing cases to test accuracy of our shortest path algorithm.
 """
 from shortest_path import Graph
 

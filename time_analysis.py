@@ -3,16 +3,15 @@ Timing analysis to compare to our dijkstra implementation to import libraries al
 """
 
 import time
-from shortest_path import Graph
-
-# from dijkstar import Graph, find_path
+import shortest_path  # Graph
+import dijkstar  # Graph, find_path
 
 
 def time_analysis(graph, source, end):
     """
     Doc String
     """
-    graph_self = Graph(graph)
+    graph_self = shortest_path.Graph(graph)
     time_self = get_average(graph_self, source, end)
     print(f"self dijkstar average time = {time_self}")
 
@@ -44,7 +43,7 @@ graph_1 = [
     [0, 0, 0, 15, 6, 0, 6],  # vertex 5
     [0, 0, 0, 0, 2, 6, 0],  # vertex 6
 ]  # vertex 6
-g = Graph(graph_1)
+g = shortest_path.Graph(graph_1)
 start_time = time.time()
 p = g.dijkstra(0, 6)
 end_time = time.time()

@@ -1,3 +1,6 @@
+"""
+Implementation of Dijkstra Algorithm using Textbook Pseudo code 
+"""
 import math
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -35,36 +38,37 @@ class Graph:
         weight = self.graph[vi][vj]
         return weight
 
-    # def visualize_graph(self):
-    #     """
-    #     Visualize a graph in adjacency matrix form given the matrix and number of vertex
-    #     """
-    #     graph_viz = nx.DiGraph()
-    #     for row in range(self.vertex):
-    #         for column in range(self.vertex):
-    #             edge_weight = self.get_weights(row, column)
-    #             if edge_weight > 1:
-    #                 graph_viz.add_edge(row, column, weight=edge_weight)
+    def visualize_graph(self):
+        """
+        Visualize a graph in adjacency matrix form given the matrix and number of vertex
+        """
+        graph_viz = nx.DiGraph()
+        for row in range(self.vertex):
+            for column in range(self.vertex):
+                edge_weight = self.get_weights(row, column)
+                if edge_weight > 0:
+                    graph_viz.add_edge(row, column, weight=edge_weight)
 
-    #     pos = nx.spring_layout(graph_viz)
-    #     nx.draw(graph_viz, pos, node_color="pink", with_labels=True)
-    #     # specifiy edge labels explicitly
-    #     edge_labels = dict(
-    #         [
-    #             (
-    #                 (
-    #                     u,
-    #                     v,
-    #                 ),
-    #                 d["weight"],
-    #             )
-    #             for u, v, d in graph_viz.edges(data=True)
-    #         ]
-    #     )
-    #     nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
-    #     plt.show()
-    #     graph_time =  time.time()
-    #     plt.savefig(f"Graph/graph_{graph_time}.jpg")
+        pos = nx.spring_layout(graph_viz)
+        nx.draw(graph_viz, pos, node_color="pink", with_labels=True)
+        # specifiy edge labels explicitly
+        edge_labels = dict(
+            [
+                (
+                    (
+                        u,
+                        v,
+                    ),
+                    d["weight"],
+                )
+                for u, v, d in graph_viz.edges(data=True)
+            ]
+        )
+        nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
+        graph_time = time.time()
+        graph_time = str(graph_time)[-4:]
+        plt.show(block=False)
+        plt.savefig(f"Graphs/graph_{graph_time}.PNG", format="PNG")
 
     def dijkstra(self, source, end):
         """
@@ -122,29 +126,3 @@ class Graph:
             current_node = min_value_index
             print(f"Shortest path: {shortest_path[end]}")
         return shortest_path[end]
-
-
-graph_1 = [
-    [0, 2, 6, 0, 0, 0, 0],  # vertex 0
-    [2, 0, 0, 5, 0, 0, 0],  # vertex 1
-    [6, 0, 0, 8, 0, 0, 0],  # vertex 2
-    [0, 5, 8, 0, 10, 15, 0],  # vertex 3
-    [0, 0, 0, 10, 0, 6, 2],  # vertex 4
-    [0, 0, 0, 15, 6, 0, 6],  # vertex 5
-    [0, 0, 0, 0, 2, 6, 0],  # vertex 6
-]
-
-test_graph = [
-    [0, 3, 0, 0, 0, 7],
-    [3, 0, 4, 0, 0, 0],
-    [0, 4, 0, 6, 0, 0],
-    [0, 0, 6, 0, 1, 0],
-    [0, 0, 0, 1, 0, 3],
-    [7, 0, 0, 0, 3, 0],
-]
-
-# g = Graph(graph_1)
-g = Graph(test_graph)
-p = g.dijkstra(0, 4)
-
-# g.visualize_graph()
