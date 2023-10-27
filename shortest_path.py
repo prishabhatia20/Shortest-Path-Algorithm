@@ -121,8 +121,8 @@ class Graph:
                     # the current path, update the shortest path
                     if shortest_path[current_node] + edge_weight < shortest_path[node]:
                         shortest_path[node] = shortest_path[current_node] + edge_weight
-            print(shortest_path)
             # Go to the next node
             current_node = min_value_index
-            print(f"Shortest path: {shortest_path[end]}")
+            # print(f"Shortest path: {shortest_path[end]}")
+
         return shortest_path[end]
