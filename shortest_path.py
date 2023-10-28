@@ -70,9 +70,12 @@ class Graph:
         nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
         graph_time = str(time.time())[-4:]
         plt.show(block=False)
-        plt.savefig(f"Graphs/graph_{graph_time}.PNG", format="PNG", facecolor= "aliceblue")
+        plt.savefig(
+            f"Graphs/graph_{graph_time}.PNG", format="PNG", facecolor="aliceblue"
+        )
         plt.cla()
         plt.clf()
+
     def dijkstra(self, source, end):
         """
         Dijkstra algorithm that finds the shortest path from one vertex
