@@ -52,9 +52,8 @@ class Graph:
                 edge_weight = self.get_weights(row, column)
                 if edge_weight > 0:
                     graph_viz.add_edge(row, column, weight=edge_weight)
-
         pos = nx.spring_layout(graph_viz)
-        nx.draw(graph_viz, pos, node_color="pink", with_labels=True)
+        nx.draw(graph_viz, pos, node_color="orange", with_labels=True)
         # specifiy edge labels explicitly
         edge_labels = dict(
             [
@@ -71,8 +70,9 @@ class Graph:
         nx.draw_networkx_edge_labels(graph_viz, pos, edge_labels=edge_labels)
         graph_time = str(time.time())[-4:]
         plt.show(block=False)
-        plt.savefig(f"Graphs/graph_{graph_time}.PNG", format="PNG")
-
+        plt.savefig(f"Graphs/graph_{graph_time}.PNG", format="PNG", facecolor= "aliceblue")
+        plt.cla()
+        plt.clf()
     def dijkstra(self, source, end):
         """
         Dijkstra algorithm that finds the shortest path from one vertex

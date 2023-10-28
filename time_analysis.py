@@ -7,7 +7,7 @@ import dijkstar  # Graph, find_path
 import scipy.sparse  # csr_matrix, csgraph.dijkstra
 import shortest_path  # Graph
 
-REPETITION = 15
+REPETITION = 30
 
 
 def time_analysis(graph, source, end):
@@ -20,6 +20,7 @@ def time_analysis(graph, source, end):
         end: an integer representing the ending vertex
     """
     graph_self = shortest_path.Graph(graph)
+    graph_self.visualize_graph()
     time_self = get_average_self(graph_self, source, end)
     time_dijkstar = get_average_dijkstar(graph, source, end)
     time_scipy = get_average_scipy(graph, source, end)
@@ -34,14 +35,13 @@ def get_average_self(graph, source, end):
     Get the average time from implemented shortest path algorithm.
     """
     time_sum = 0
-    repetition = 10
-    for _ in range(repetition):
+    for _ in range(REPETITION):
         start_time = time.time()
         graph.dijkstra(source, end)
         end_time = time.time()
         total_time = end_time - start_time
         time_sum = total_time + time_sum
-    average = time_sum / repetition
+    average = time_sum / REPETITION
     return average
 
 

@@ -159,9 +159,9 @@ def test_cycle_with_bridge():
     assert shortest_path == 6
 
 
-def test_halin_graph():
+def test_large_connected_graph():
     """
-    Test large Halin graph with 20 nodes.
+    Test large connected graph with 20 nodes.
     Created with https://graphonline.ru/en/?graph=HalinGraph
     """
     test_graph = [
