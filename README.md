@@ -9,9 +9,21 @@ Our goal is to implement Dijkstra’s algorithm in Python from scratch. We have 
 ## How the Program Works
 We created a Graph class that is able to read an adjacency matrix and extract the number of nodes within the graph as well as the weights between any two nodes. This class includes a function called dijkstra() that has the source node and the destination node as its parameters, then outputs the length of the shortest path between the two points. The algorithm then outputs a visualization of the graph with labeled nodes and weights.
 
+## Results
+
+## Source Image Links for Graphs
+These graphs were used in our test cases.
+Simple Graph: https://reginafurness.medium.com/representing-a-weighted-graph-with-an-adjacency-matrix-in-javascript-8a803bfbc36f
+Large Graph with Nine Nodes: https://courses.cs.vt.edu/~cs3114/Fall10/Notes/T22.WeightedGraphs.pdf
+Connected Nodes: https://ucarecdn.com/a67cb888-aa0c-424b-8c7f-847e38dd5691/
+Cycle with Bridge: http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/shortest-path.pdf
+
 ## Sources
 Chumbley, Alex. “Shortest Path Algorithms.” Brilliant Math & Science Wiki, Brilliant , brilliant.org/wiki/shortest-path-algorithms/. Accessed 12 Oct. 2023.
+
 Navone, Estefania Cassingena. “Dijkstra’s Shortest Path Algorithm - a Detailed and Visual Introduction.” freeCodeCamp.Org, freeCodeCamp.org, 3 Feb. 2022, www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/.
+
 “Shortest Paths.” Shortest Paths, Discrete Mathematics, Optimization, and Convexity Department of Mathematics Technical University of Munich, algorithms.discrete.ma.tum.de/spp/#:~:text=Dijkstra’s%20Algorithm%20computes%20the%20shortest,adge%20weights%20are%20non%2Dnegative. Accessed 12 Oct. 2023. 
+
 Rosen, Kenneth H. Discrete mathematics and its applications. The McGraw Hill Companies, 2007.
 
