@@ -13,12 +13,18 @@ We created a Graph class that is able to read an adjacency matrix and extract th
 
 ## Source Image Links for Graphs
 These graphs were used in our test cases.
+
 Simple Graph: https://reginafurness.medium.com/representing-a-weighted-graph-with-an-adjacency-matrix-in-javascript-8a803bfbc36f
+
 Large Graph with Nine Nodes: https://courses.cs.vt.edu/~cs3114/Fall10/Notes/T22.WeightedGraphs.pdf
+
 Connected Nodes: https://ucarecdn.com/a67cb888-aa0c-424b-8c7f-847e38dd5691/
+
 Cycle with Bridge: http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/shortest-path.pdf
 
 ## Sources
+Baldwin, Wyatt. “Dijkstar · PyPI.” PyPI, https://pypi.org/project/Dijkstar/. Accessed 27 October 2023.
+
 Chumbley, Alex. “Shortest Path Algorithms.” Brilliant Math & Science Wiki, Brilliant , brilliant.org/wiki/shortest-path-algorithms/. Accessed 12 Oct. 2023.
 
 Navone, Estefania Cassingena. “Dijkstra’s Shortest Path Algorithm - a Detailed and Visual Introduction.” freeCodeCamp.Org, freeCodeCamp.org, 3 Feb. 2022, www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/.
@@ -26,4 +32,8 @@ Navone, Estefania Cassingena. “Dijkstra’s Shortest Path Algorithm - a Detail
 “Shortest Paths.” Shortest Paths, Discrete Mathematics, Optimization, and Convexity Department of Mathematics Technical University of Munich, algorithms.discrete.ma.tum.de/spp/#:~:text=Dijkstra’s%20Algorithm%20computes%20the%20shortest,adge%20weights%20are%20non%2Dnegative. Accessed 12 Oct. 2023. 
 
 Rosen, Kenneth H. Discrete mathematics and its applications. The McGraw Hill Companies, 2007.
+
+“python - Labeling edges in networkx.” Stack Overflow, 3 November 2017, https://stackoverflow.com/questions/47094949/labeling-edges-in-networkx. Accessed 25 October 2023.
+
+scipy.sparse.csgraph.dijkstra — SciPy v1.11.3 Manual, https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.dijkstra.html. Accessed 27 October 2023.
 
