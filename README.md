@@ -9,7 +9,11 @@ Our goal is to implement Dijkstra’s algorithm in Python from scratch. We have 
 ## How the Program Works
 We created a Graph class that is able to read an adjacency matrix and extract the number of nodes within the graph as well as the weights between any two nodes. This class includes a function called dijkstra() that has the source node and the destination node as its parameters, then outputs the length of the shortest path between the two points. The algorithm then outputs a visualization of the graph with labeled nodes and weights.
 
-## Results
+## Timing Optimization Results
+We compared our algorithm to an already-made Dikjstra library and a SciPy library.
+![image](https://github.com/prishabhatia20/Shortest-Path-Algorithm/assets/67985548/e5aa6350-63f8-4f4f-be73-20ae719dc37a)
+
+The percentages were created by Time/Self_Time * 100. For example, for the first row, if we set the standard so that our own algorithm operates at a time that represents 100%, then Dikjstra takes only 29.8% of that time and SciPy takes 788.0% of that time. In conclusion, the Dijkstra library operates more quickly than our algorithm, but SciPy was much slower though timing was reduced as the graph size increased.
 
 ## Source Image Links for Graphs
 These graphs were used in our test cases.
