@@ -19,6 +19,15 @@ The percentages were created by Time/Self_Time * 100. For example, for the first
 
 NOTE: Timings differ slightly based on what computer the code is run on.
 
+## Dependencies
+In order to run this algorithm, you need to install the following libraries.
+- time
+- dijkstar 
+- scipy
+- math
+- networkx
+- matplotlib
+
 ## Source Image Links for Graphs
 These graphs were used in our test cases.
 
