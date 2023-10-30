@@ -18,8 +18,25 @@ We compared our algorithm to an already-made Dikjstra library and a SciPy librar
 The percentages were created by Time/Self_Time * 100. For example, for the first row, if we set the standard so that our own algorithm operates at a time that represents 100%, then Dikjstra takes only 29.8% of that time and SciPy takes 788.0% of that time. In conclusion, the Dijkstra library operates more quickly than our algorithm, but SciPy was much slower though timing was reduced as the graph size increased.
 
 The raw output from the time anaylsis function is below.
-<img width="691" alt="Screenshot 2023-10-29 at 9 25 09 PM" src="https://github.com/prishabhatia20/Shortest-Path-Algorithm/assets/98286457/869c9e6b-84a9-4980-adf5-0f095db8e049">
 
+```
+Seven Nodes:
+self dijkstar average time = 1.220703125e-05
+dijkstar dijkstar average time = 3.631909688313802e-06
+Scipy dijkstar average time = 9.618600209554037e-05
+Nine Nodes:
+self dijkstar average time = 2.0694732666015624e-05
+dijkstar dijkstar average time = 4.00543212890625e-06
+Scipy dijkstar average time = 5.9262911478678385e-05
+Sparse Graph
+self dijkstar average time = 1.6927719116210938e-05
+dijkstar dijkstar average time = 3.933906555175781e-06
+Scipy dijkstar average time = 5.9096018473307293e-05
+Large Halin Graph
+self dijkstar average time = 8.931159973144532e-05
+dijkstar dijkstar average time = 9.632110595703125e-06
+Scipy dijkstar average time = 5.980332692464193e-05
+```
 
 NOTE: Timings differ slightly based on what computer the code is run on.
 
