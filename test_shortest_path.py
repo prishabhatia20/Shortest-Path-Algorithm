@@ -145,6 +145,7 @@ def test_connected_nodes():
 def test_cycle_with_bridge():
     """
     Test a cycle graph with a single bridge.
+    Graph Credit: http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/shortest-path.pdf
     """
     test_graph = [
         [0, 1, 7, 4, 0, 0],
