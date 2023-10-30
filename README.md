@@ -15,6 +15,8 @@ We compared our algorithm to an already-made Dikjstra library and a SciPy librar
 
 The percentages were created by Time/Self_Time * 100. For example, for the first row, if we set the standard so that our own algorithm operates at a time that represents 100%, then Dikjstra takes only 29.8% of that time and SciPy takes 788.0% of that time. In conclusion, the Dijkstra library operates more quickly than our algorithm, but SciPy was much slower though timing was reduced as the graph size increased.
 
+NOTE: Timings differ slightly based on what computer the code is run on.
+
 ## Source Image Links for Graphs
 These graphs were used in our test cases.
 
@@ -40,4 +42,6 @@ Rosen, Kenneth H. Discrete mathematics and its applications. The McGraw Hill Com
 “python - Labeling edges in networkx.” Stack Overflow, 3 November 2017, https://stackoverflow.com/questions/47094949/labeling-edges-in-networkx. Accessed 25 October 2023.
 
 scipy.sparse.csgraph.dijkstra — SciPy v1.11.3 Manual, https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.dijkstra.html. Accessed 27 October 2023.
+
+Special thanks to Sarah and our CAs Alex, Isa, Cherry, and Jess for helping us with this implementation. 
 
