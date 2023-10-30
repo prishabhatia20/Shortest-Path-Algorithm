@@ -6,6 +6,8 @@ Shortest path algorithms are algorithms that search for the shortest path betwee
 ## Project Description
 Our goal is to implement Dijkstra’s algorithm in Python from scratch. We have used our prior coding knowledge along with the pseudocode in the Discrete Mathematics and Its Applications by Kenneth H. Rosen textbook to write an algorithm that we feel is efficient. We will then analyze how the speed and optimization compares to other already made algorithm implementations to deepen our understanding of this algorithm; it will force us to think about the design choices we used when writing our implementation and allow us to learn ways to write more efficient and optimal code.
 
+We also made a visual representation of our project linked [here](https://www.canva.com/design/DAFx1Y7cJs0/_S5V7FahvZE7nDPIxJW7Yg/view?utm_content=DAFx1Y7cJs0&utm_campaign=designshare&utm_medium=link&utm_source=editor).
+
 ## How the Program Works
 We created a Graph class that is able to read an adjacency matrix and extract the number of nodes within the graph as well as the weights between any two nodes. This class includes a function called dijkstra() that has the source node and the destination node as its parameters, then outputs the length of the shortest path between the two points. The algorithm then outputs a visualization of the graph with labeled nodes and weights.
 
