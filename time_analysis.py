@@ -7,7 +7,7 @@ import dijkstar  # Graph, find_path
 import scipy.sparse  # csr_matrix, csgraph.dijkstra
 import shortest_path  # Graph
 
-REPETITION = 30
+REPETITION = 45
 
 
 def time_analysis(graph, source, end):

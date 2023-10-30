@@ -105,21 +105,12 @@ class Graph:
         while end not in visited_nodes:
             min_value = self.INF
             min_value_index = None
-            min_weight = 0
             for i, dist_value in enumerate(shortest_path):
                 if dist_value < min_value and i not in visited_nodes:
                     # length of shortest path neighbor
                     min_value = dist_value  
                     # index of shortest path neighbor
-                    min_value_index = i  
-            for vertex in range(self.vertices):
-                # Find the smallest weight within the row of the next node
-                weight = self.graph[min_value_index][vertex]
-                if weight != 0:
-                    min_weight = weight
-                elif min_weight != 0 and weight < min_weight:
-                    min_weight = weight
-            # Add current node to visited nodes list and remove it from unvisited nodes list
+                    min_value_index = i
             if current_node in unvisited_nodes:
                 visited_nodes.append(current_node)
                 unvisited_nodes.remove(current_node)
